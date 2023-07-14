@@ -1,4 +1,4 @@
-![BetterRTX Installer GUI](assets\banner.png)
+![BetterRTX Installer GUI](assets/banner.png)
 
 # BetterRTX Installer GUI
 
