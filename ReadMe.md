@@ -2,9 +2,9 @@
 
 # BetterRTX Installer GUI
 
-[![Discord](https://img.shields.io/badge/Join%20The%20BetterRTX-Discord%20Server-7289DA?style=flat-square&logo=discord)](https://discord.com/users/753294480609902712)&nbsp;&nbsp;&nbsp;[![GitHub](https://img.shields.io/badge/Check%20out%20the-GitHub-181717?style=flat-square&logo=github)](https://github.com/SomnathChW)
+[![Discord](https://img.shields.io/badge/Join%20The%20BetterRTX-Discord%20Server-7289DA?style=flat-square&logo=discord)](https://discord.gg/minecraft-rtx-691547840463241267)&nbsp;&nbsp;&nbsp;[![GitHub](https://img.shields.io/badge/Check%20out%20the-GitHub-181717?style=flat-square&logo=github)](https://github.com/SomnathChW)
 
-[![GitHub](https://img.shields.io/badge/Check%20out%20the%20original%20Installer-GitHub-181717?style=flat-square&logo=github)](https://github.com/SomnathChW)
+[![GitHub](https://img.shields.io/badge/Check%20out%20the%20original%20Installer-GitHub-181717?style=flat-square&logo=github)](https://github.com/BetterRTX/BetterRTX-Installer)
 
 Welcome to BetterRTX Installer GUI! This graphical user interface (GUI) application allows you to install and uninstall BetterRTX, providing an enhanced experience for the installation of BetterRTX. With two different modes, IOBit and Native, you can choose the installation method that best suits your needs.
 
