@@ -7,12 +7,15 @@ To download and install the official release version of the software,
 please visit the GitHub repository and navigate to the "Releases" section.
 You can find the stable installer there.
 
-Download Link: [Insert GitHub Releases Link]
+Download Links: https://github.com/SomnathChW/BetterRTX-Installer-GUI/tags
 
 Please exercise caution and refrain from using any files in this folder
 unless you fully understand the risks involved.
 
 By proceeding to use these files, you acknowledge that you are aware
 of the potential consequences and agree to use them at your own risk.
+
+
+The Sample Output version is the Initial Build of the GUI with no error checking.
 
 ***************************************************************
