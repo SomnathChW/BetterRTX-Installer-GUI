@@ -2,3 +2,5 @@ instalSettings.json
 Pipfile
 Pipfile.lock
 output/
+RTXPostFX.Tonemapping.material.bin
+RTXStub.material.bin

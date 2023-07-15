@@ -33,6 +33,7 @@ BROWSE_SHORT = "..."
 COPYRIGHT = "© 2023 BetterRTX Team"
 
 NOTE_REBOOT = "ⓘ Note: This option requires a reboot to take effect"
+LOADING_MESSAGE = "Loading... Please Wait"
 
 EXECUTABLE_FOUND_MESSAGE = "✅ Executable Found (Ensure IOBit Unlocker is selected)"
 EXECUTABLE_NOT_FOUND_MESSAGE = "❌ Executable Not Found (Please Select Valid Path)"

@@ -32,8 +32,17 @@ class NativePage(ctk.CTkFrame):
         )
         self.preset_selector.pack(side="top", anchor="w", expand=False, fill="x")
 
+        self.loading_label = ctk.CTkLabel(
+            self,
+            fg_color=BACKGROUND_COLOR,
+            text=LOADING_MESSAGE,
+            font=FONT,
+            text_color=TEXT_COLOR_DARK,
+        )
+        self.loading_label.pack(side="top", anchor="w")
+
         self.buttons_frame = ctk.CTkFrame(self, fg_color=BACKGROUND_COLOR)
-        self.buttons_frame.pack(fill="x", side="top", pady=20)
+        self.buttons_frame.pack(fill="x", side="top")
 
         self.uninstall_button = ctk.CTkButton(
             self.buttons_frame,
@@ -112,11 +121,16 @@ class NativePage(ctk.CTkFrame):
             self.install_button.configure(state="normal")
             self.uninstall_button.configure(state="normal")
 
+        self.loading_label.pack_forget()
+        self.buttons_frame.pack(expand=True, fill="x", side="top", pady=10)
+
     def install(self):
+        self.loading_label.pack(side="top", anchor="w")
         threading.Thread(target=self.download_install).start()
 
 
     def uninstall(self):
+        self.loading_label.pack(side="top", anchor="e")
         self.stub_url = VANILLA_STUB_URL
         self.tonemapping_url = VANILLA_TONEMAP_URL
 
@@ -155,3 +169,5 @@ class NativePage(ctk.CTkFrame):
         self.install_button.configure(state="normal")
         self.uninstall_button.configure(state="normal")
         self.preset_selector.configure(state="readonly")
+
+        self.loading_label.pack_forget()

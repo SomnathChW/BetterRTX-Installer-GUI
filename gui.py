@@ -2,6 +2,7 @@ import customtkinter as ctk
 import tkinter
 from settings import *
 from PIL import Image, ImageTk
+import webbrowser
 
 from iobit import IOBitPage
 from native import NativePage
@@ -109,6 +110,8 @@ class App(ctk.CTk):
         self.github_label = ctk.CTkLabel(self.links_frame, image=self.github_image, text="")
         self.github_label.pack(side="right")
 
+        self.github_label.bind("<Button-1>", lambda e: self.web_callback("https://github.com/SomnathChW/BetterRTX-Installer-GUI"))
+
         self.seperator_label =ctk.CTkLabel(
             self.links_frame,
             fg_color=BACKGROUND_COLOR,
@@ -121,6 +124,9 @@ class App(ctk.CTk):
         self.discord_image = ImageTk.PhotoImage(discord_image)
         self.discord_label = ctk.CTkLabel(self.links_frame, image=self.discord_image, text="")
         self.discord_label.pack(side="right")
+
+        self.discord_label.bind("<Button-1>", lambda e: self.web_callback("https://discord.gg/QwwdsGaw"))
+
 
         self.copyright_label = ctk.CTkLabel(
             self.links_frame,
@@ -155,6 +161,9 @@ class App(ctk.CTk):
             windll.dwmapi.DwmSetWindowAttribute(HWND, DWMWA_ATTRIBUTE, byref(c_int(COLOR)), sizeof(c_int))
         except:
             pass
+
+    def web_callback(self, url):
+        webbrowser.open_new(url)
 
 
 if __name__ == "__main__":
