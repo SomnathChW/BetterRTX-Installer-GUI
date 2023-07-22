@@ -88,7 +88,7 @@ class NativePage(ctk.CTkFrame):
             font=FONT_BIG,
             text_color=INFORMATION_TEXT_COLOR,
         )
-        self.note_label.pack(side="top", anchor="w", expand=False, fill="x")
+        self.note_label.pack(side="top", anchor="w", expand=False, fill="x", pady=10)
 
         threading.Thread(target=self.populate).start()
 
@@ -121,16 +121,15 @@ class NativePage(ctk.CTkFrame):
             self.install_button.configure(state="normal")
             self.uninstall_button.configure(state="normal")
 
-        self.loading_label.pack_forget()
-        self.buttons_frame.pack(expand=True, fill="x", side="top", pady=10)
+        self.loading_label.configure(text_color = TEXT_COLOR_LIGHT)
 
     def install(self):
-        self.loading_label.pack(side="top", anchor="w")
+        self.loading_label.configure(text_color = TEXT_COLOR_DARK)
         threading.Thread(target=self.download_install).start()
 
 
     def uninstall(self):
-        self.loading_label.pack(side="top", anchor="e")
+        self.loading_label.configure(text_color = TEXT_COLOR_DARK)
         self.stub_url = VANILLA_STUB_URL
         self.tonemapping_url = VANILLA_TONEMAP_URL
 
@@ -155,11 +154,13 @@ class NativePage(ctk.CTkFrame):
 
         p = subprocess.Popen([
             "powershell.exe",
+            "-ExecutionPolicy",
+            "Bypass",
             "-noprofile",
             "-c",
             fr"""
             Start-Process -Verb RunAs -Wait powershell.exe -Args "
-            -noprofile -c Set-Location \`"$PWD\`"; & '{script_path}'
+            -noprofile -ExecutionPolicy Bypass -c Set-Location \`"$PWD\`"; & '{script_path}'
             "
             """
         ])
@@ -170,4 +171,4 @@ class NativePage(ctk.CTkFrame):
         self.uninstall_button.configure(state="normal")
         self.preset_selector.configure(state="readonly")
 
-        self.loading_label.pack_forget()
+        self.loading_label.configure(text_color = TEXT_COLOR_LIGHT)

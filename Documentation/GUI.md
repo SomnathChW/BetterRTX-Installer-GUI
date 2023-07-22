@@ -25,7 +25,7 @@ This class represents the main application. It inherits from `customtkinter.CTk`
 -   `mode_selected`: An `IntVar` that stores the selected mode.
 -   `radiobutton_1`: The first radio button for selecting the IOBit mode.
 -   `radiobutton_2`: The second radio button for selecting the Native mode.
--   `divider_label`: A label widget used as a visual divider.
+<!-- -   `divider_label`: A label widget used as a visual divider.  Not used anymore.  -->
 -   `content_frame`: A frame that contains the content (IOBit and Native pages).
 -   `iobit_page`: The IOBit page.
 -   `native_page`: The Native page.
@@ -37,6 +37,7 @@ This class represents the main application. It inherits from `customtkinter.CTk`
 -   `seperator_label`: A label widget used as a visual separator.
 -   `discord_label`: A label widget that displays the Discord logo.
 -   `copyright_label`: A label widget that displays the copyright information.
+-   `version_label`: A label widget that displays the version information.
 
 ### Example Usage
 
@@ -48,7 +49,7 @@ app.mainloop()
 ---
 
 **Author:** SomnathChW  
-**Last Modified:** July 14, 2023
+**Last Modified:** July 22, 2023
 
 [![Discord](https://img.shields.io/badge/Join%20me%20on-Discord-7289DA?style=flat-square&logo=discord)](https://discord.com/users/753294480609902712)  
 [![GitHub](https://img.shields.io/badge/Check%20out%20my-GitHub-181717?style=flat-square&logo=github)](https://github.com/SomnathChW)

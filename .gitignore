@@ -4,3 +4,4 @@ Pipfile.lock
 output/
 RTXPostFX.Tonemapping.material.bin
 RTXStub.material.bin
+SampleOutput/

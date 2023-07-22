@@ -24,8 +24,8 @@ class App(ctk.CTk):
         self.columnconfigure(0, weight=4, uniform="a")
         self.columnconfigure(1, weight=6, uniform="a")
 
-        self.splash_image = ImageTk.PhotoImage(Image.open("./assets/BetterRTX.png"))
-        self.splash_label = ctk.CTkLabel(self, image=self.splash_image, text="")
+        self.splash_image = ctk.CTkImage(light_image=Image.open("./assets/BetterRTX.png"), size=(220, 300))
+        self.splash_label = ctk.CTkLabel(self, image=self.splash_image, text="", fg_color=BACKGROUND_COLOR)
         self.splash_label.grid(row = 0, column = 0, sticky = "nsew")
 
         self.main_frame = ctk.CTkFrame(self, fg_color = BACKGROUND_COLOR)
@@ -67,14 +67,14 @@ class App(ctk.CTk):
         self.radiobutton_1.pack(expand=True, fill="x", side = "left")
         self.radiobutton_2.pack(expand=True, fill="x", side = "left")
 
-        self.divider_label =ctk.CTkLabel(
-            self.main_frame,
-            fg_color=BACKGROUND_COLOR,
-            text='',
-            font=FONT,
-            text_color=TEXT_COLOR_DARK,
-        )
-        self.divider_label.pack(side="top", pady=2, fill="x", expand=False)
+        # self.divider_label =ctk.CTkLabel(
+        #     self.main_frame,
+        #     fg_color=BACKGROUND_COLOR,
+        #     text='',
+        #     font=FONT,
+        #     text_color=TEXT_COLOR_DARK,
+        # )
+        # self.divider_label.pack(side="top", pady=2, fill="x", expand=False)
 
         
         self.content_frame = ctk.CTkFrame(self.main_frame, fg_color = BACKGROUND_COLOR)
@@ -127,7 +127,6 @@ class App(ctk.CTk):
 
         self.discord_label.bind("<Button-1>", lambda e: self.web_callback("https://discord.gg/QwwdsGaw"))
 
-
         self.copyright_label = ctk.CTkLabel(
             self.links_frame,
             fg_color=BACKGROUND_COLOR,
@@ -137,6 +136,14 @@ class App(ctk.CTk):
         )
         self.copyright_label.pack(side="left", anchor="w")
 
+        self.version_label = ctk.CTkLabel(
+            self.links_frame,
+            fg_color=BACKGROUND_COLOR,
+            text=VERSION,
+            font=FONT,
+            text_color=TEXT_COLOR_DARK,
+        )
+        self.version_label.pack(side="left", anchor="c", expand=True, fill="x")
 
         self.mainloop()
 

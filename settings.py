@@ -38,6 +38,13 @@ LOADING_MESSAGE = "Loading... Please Wait"
 EXECUTABLE_FOUND_MESSAGE = "✅ Executable Found (Ensure IOBit Unlocker is selected)"
 EXECUTABLE_NOT_FOUND_MESSAGE = "❌ Executable Not Found (Please Select Valid Path)"
 
+#VERSION DETAILS
+VERSION = " v0.0.2"
+VERSION_DETAILS = "BetterRTX Installer v" + VERSION
+CREATED_BY = "Created by: SomnathChW"
+EXPECTED_RELEASE_DATE = "22-07-2023"
+
+
 #URLS
 SERVER_URL = "https://average-visor-eel.cyclic.app" 
 VANILLA_STUB_URL = "https://average-visor-eel.cyclic.app/uninstall/rtxstub"
