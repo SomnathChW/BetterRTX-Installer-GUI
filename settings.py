@@ -49,6 +49,12 @@ EXPECTED_RELEASE_DATE = "22-07-2023"
 SERVER_URL = "https://average-visor-eel.cyclic.app" 
 VANILLA_STUB_URL = "https://average-visor-eel.cyclic.app/uninstall/rtxstub"
 VANILLA_TONEMAP_URL = "https://average-visor-eel.cyclic.app/uninstall/rtxpostfx"
+# BANNER_IMAGE_URL = "https://raw.githubusercontent.com/SomnathChW/BetterRTX-Installer-GUI/master/assets/BetterRTX.png"
+BANNER_IMAGE_URL = "https://drive.google.com/uc?export=download&id=14bQworulKq7NKH4CT2OcNLoK-aRLogdm"
+COPYRIGHT_URL = "https://discord.gg/2YJYqY6"
+
+GITHUB_URL = "https://github.com/SomnathChW/BetterRTX-Installer-GUI"
+DISCORD_URL = "https://discord.gg/2YJYqY6"
 
 #Names
 TONEMAP_NAME = "RTXPostFX.Tonemapping.material.bin"

@@ -15,10 +15,15 @@ This class represents the main application. It inherits from `customtkinter.CTk`
 -   `show_iobit_page()`: Displays the IOBit page.
 -   `show_native_page()`: Displays the Native page.
 -   `configure_title_bar_color(color)`: Configures the color of the title bar.
+-   `download_image_from_endpoint()`: Downloads the image from the endpoint.
+-   `download_and_fade_in_image()`: Downloads the image from the endpoint and fades it in.
+-   `web_callback(url)`: Opens the URL in the default web browser.
 
 ### Attributes
 
--   `splash_image`: An image displayed on the left half of the installer.
+-   `placeholder_image`: An image displayed on the left half of the installer before it is fetched from the internet.
+-   `downloaded_image`: An image displayed on the left half of the installer after it is fetched from the internet.
+-   `blended_image`: A blended image of the placeholder image and the downloaded image for a fade effect.
 -   `splash_label`: A label widget that shows the splash image.
 -   `main_frame`: The main frame of the application.
 -   `selection_frame`: A frame that contains the radio button selection options.
@@ -38,6 +43,7 @@ This class represents the main application. It inherits from `customtkinter.CTk`
 -   `discord_label`: A label widget that displays the Discord logo.
 -   `copyright_label`: A label widget that displays the copyright information.
 -   `version_label`: A label widget that displays the version information.
+-   `overlay`: A frame that is used to display the IOBit page.
 
 ### Example Usage
 

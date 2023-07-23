@@ -3,6 +3,9 @@ import tkinter
 from settings import *
 from PIL import Image, ImageTk
 import webbrowser
+import requests
+import io
+import threading
 
 from iobit import IOBitPage
 from native import NativePage
@@ -24,9 +27,16 @@ class App(ctk.CTk):
         self.columnconfigure(0, weight=4, uniform="a")
         self.columnconfigure(1, weight=6, uniform="a")
 
-        self.splash_image = ctk.CTkImage(light_image=Image.open("./assets/BetterRTX.png"), size=(220, 300))
+        self.placeholder_image = Image.open("./assets/BetterRTX.png")
+        
+        self.splash_image = ctk.CTkImage(light_image=self.placeholder_image, size=(220, 300))
         self.splash_label = ctk.CTkLabel(self, image=self.splash_image, text="", fg_color=BACKGROUND_COLOR)
         self.splash_label.grid(row = 0, column = 0, sticky = "nsew")
+
+        # Download the image from the internet in a separate thread
+        threading.Thread(target=self.download_and_fade_in_image).start()
+
+        self.splash_label.bind("<Button-1>", lambda e: self.web_callback(COPYRIGHT_URL))
 
         self.main_frame = ctk.CTkFrame(self, fg_color = BACKGROUND_COLOR)
         self.main_frame.grid(row = 0, column = 1, sticky = "nsew")
@@ -110,7 +120,7 @@ class App(ctk.CTk):
         self.github_label = ctk.CTkLabel(self.links_frame, image=self.github_image, text="")
         self.github_label.pack(side="right")
 
-        self.github_label.bind("<Button-1>", lambda e: self.web_callback("https://github.com/SomnathChW/BetterRTX-Installer-GUI"))
+        self.github_label.bind("<Button-1>", lambda e: self.web_callback(GITHUB_URL))
 
         self.seperator_label =ctk.CTkLabel(
             self.links_frame,
@@ -125,7 +135,7 @@ class App(ctk.CTk):
         self.discord_label = ctk.CTkLabel(self.links_frame, image=self.discord_image, text="")
         self.discord_label.pack(side="right")
 
-        self.discord_label.bind("<Button-1>", lambda e: self.web_callback("https://discord.gg/QwwdsGaw"))
+        self.discord_label.bind("<Button-1>", lambda e: self.web_callback(DISCORD_URL))
 
         self.copyright_label = ctk.CTkLabel(
             self.links_frame,
@@ -172,6 +182,43 @@ class App(ctk.CTk):
     def web_callback(self, url):
         webbrowser.open_new(url)
 
+    def download_and_fade_in_image(self):
+        # Simulate downloading the image from the internet
+        downloaded_image = self.download_image_from_endpoint()
+        if downloaded_image:
+            # Convert the downloaded image to a PhotoImage
+            self.downloaded_image = ctk.CTkImage(light_image=downloaded_image, size=(220, 300))
+
+            # Define the function for fading
+            def fade_image(alpha=0):
+                if alpha <= 255:
+                    blended_image = Image.blend(self.placeholder_image, downloaded_image, alpha / 255.0)
+                    self.blended_image = ctk.CTkImage(light_image=blended_image, size=(220, 300))
+                    self.splash_label.configure(image=self.blended_image)
+                    self.update_idletasks()
+                    # Schedule the next fading step after a delay
+                    self.after(1, fade_image, alpha + 10)
+
+            # Start the fading process
+            fade_image()
+
+            # Set the final image to the downloaded image after fading is complete
+            self.after(255, lambda: self.splash_label.configure(image=self.downloaded_image))
+
+    def download_image_from_endpoint(self):
+        try:
+            print("Downloading image...")
+            response = requests.get(BANNER_IMAGE_URL)
+            if response.status_code == 200:
+                response_image = Image.open(io.BytesIO(response.content))
+                overlay_image = Image.open("./assets/overlay.png")
+                response_image.paste(overlay_image, (0, 0), overlay_image)
+                return response_image
+            else:
+                return None
+        except Exception as e:
+            print(f"Error fetching the image: {e}")
+            return None
 
 if __name__ == "__main__":
     App()
