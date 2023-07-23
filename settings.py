@@ -38,6 +38,16 @@ LOADING_MESSAGE = "Loading... Please Wait"
 EXECUTABLE_FOUND_MESSAGE = "✅ Executable Found (Ensure IOBit Unlocker is selected)"
 EXECUTABLE_NOT_FOUND_MESSAGE = "❌ Executable Not Found (Please Select Valid Path)"
 
+IOBIT_MODE_MESSAGE = "IOBit  (Recommended)"
+NATIVE_MODE_MESSAGE = "Native  (Experimental)"
+LOCAL_MODE_MESSAGE = "Install From Local Files (Advanced)"
+
+INVALID_FILE_PATH_MESSAGE = "❌ Invalid File Path (Please Select Valid Path)"
+
+# IOBIT_MODE_MESSAGE = "IOBit (Recommended)"
+# NATIVE_MODE_MESSAGE = "Native"
+# LOCAL_MODE_MESSAGE = "Install Local Files"
+
 #VERSION DETAILS
 VERSION = " v0.0.2"
 VERSION_DETAILS = "BetterRTX Installer v" + VERSION
@@ -60,3 +70,4 @@ DISCORD_URL = "https://discord.gg/2YJYqY6"
 TONEMAP_NAME = "RTXPostFX.Tonemapping.material.bin"
 STUB_NAME = "RTXStub.material.bin"
 INSTALLER_NAME = "BetterRTX Installer"
+

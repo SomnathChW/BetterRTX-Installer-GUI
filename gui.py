@@ -9,6 +9,7 @@ import threading
 
 from iobit import IOBitPage
 from native import NativePage
+from local import LocalPage
 
 try:
     from ctypes import windll, byref, sizeof, c_int
@@ -44,12 +45,18 @@ class App(ctk.CTk):
         self.selection_frame = ctk.CTkFrame(self.main_frame, fg_color = BACKGROUND_COLOR)
         self.selection_frame.pack(expand=True, fill="x", side = "top")
 
+        self.selection_frame.columnconfigure(0, weight=1, uniform="a")
+        self.selection_frame.columnconfigure(1, weight=1, uniform="a")
+        self.selection_frame.rowconfigure(0, weight=8, uniform="a")
+        self.selection_frame.rowconfigure(1, weight=1, uniform="a")
+        self.selection_frame.rowconfigure(2, weight=8, uniform="a")
+
         self.mode_selected = tkinter.IntVar(value=1)
         self.radiobutton_1 = ctk.CTkRadioButton(
             self.selection_frame, 
             width=5,
             height=5,
-            text="IOBit (Recommended)", 
+            text=IOBIT_MODE_MESSAGE, 
             font=FONT, 
             text_color=TEXT_COLOR_DARK, 
             hover=False,
@@ -63,7 +70,7 @@ class App(ctk.CTk):
             self.selection_frame, 
             width=5,
             height=5,
-            text="Native (Reboot Required)", 
+            text=NATIVE_MODE_MESSAGE,
             font=FONT, 
             text_color=TEXT_COLOR_DARK, 
             hover=False,
@@ -73,9 +80,24 @@ class App(ctk.CTk):
             command=self.radiobutton_event, 
             variable= self.mode_selected, 
             value=2)
-        
-        self.radiobutton_1.pack(expand=True, fill="x", side = "left")
-        self.radiobutton_2.pack(expand=True, fill="x", side = "left")
+        self.radiobutton_3 = ctk.CTkRadioButton(
+            self.selection_frame,
+            width=5,
+            height=5,
+            text=LOCAL_MODE_MESSAGE,
+            font=FONT,
+            text_color=TEXT_COLOR_DARK,
+            hover=False,
+            fg_color=SELECTED_BUTTON_COLOR,
+            border_width_checked=11,
+            border_width_unchecked=11,
+            command=self.radiobutton_event,
+            variable=self.mode_selected,
+            value=3)
+
+        self.radiobutton_1.grid(row=0, column=0, sticky='nsew')
+        self.radiobutton_2.grid(row=0, column=1, sticky='nsew')
+        self.radiobutton_3.grid(row=2, column=0, sticky='nsew', columnspan=2)
 
         # self.divider_label =ctk.CTkLabel(
         #     self.main_frame,
@@ -95,6 +117,9 @@ class App(ctk.CTk):
 
         self.native_page = NativePage(self.content_frame)
         self.native_page.grid(row=0, column=0, sticky='nsew')
+
+        self.local_page = LocalPage(self.content_frame)
+        self.local_page.grid(row=0, column=0, sticky='nsew')
 
         self.show_iobit_page()
 
@@ -161,14 +186,19 @@ class App(ctk.CTk):
         selection = self.mode_selected.get()
         if selection == 1:
             self.show_iobit_page()
-        else :
+        elif selection == 2:
             self.show_native_page()
+        else:
+            self.show_local_page()    
 
     def show_iobit_page(self):
         self.iobit_page.lift()
 
     def show_native_page(self):
         self.native_page.lift()
+
+    def show_local_page(self):
+        self.local_page.lift()
 
     def configure_title_bar_color(self, color):
         try:
@@ -207,7 +237,6 @@ class App(ctk.CTk):
 
     def download_image_from_endpoint(self):
         try:
-            print("Downloading image...")
             response = requests.get(BANNER_IMAGE_URL)
             if response.status_code == 200:
                 response_image = Image.open(io.BytesIO(response.content))
