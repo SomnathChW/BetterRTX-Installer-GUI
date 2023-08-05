@@ -62,7 +62,7 @@ To use the script, provide the required parameter values when calling the script
 
 ---
 **Author:** SomnathChW  
-**Last Modified:** July 22, 2023  
+**Last Modified:** August 05, 2023
 
 [![Discord](https://img.shields.io/badge/Join%20me%20on-Discord-7289DA?style=flat-square&logo=discord)](https://discord.com/users/753294480609902712)    
 [![GitHub](https://img.shields.io/badge/Check%20out%20my-GitHub-181717?style=flat-square&logo=github)](https://github.com/SomnathChW)
