@@ -20,7 +20,7 @@ class App(ctk.CTk):
     def __init__(self):
         super().__init__(fg_color = BACKGROUND_COLOR)
         self.title(INSTALLER_NAME)
-        # self.iconbitmap('logo.ico')
+        self.iconbitmap('./assets/icon.ico')
         self.geometry("550x300")
         self.resizable(False, False)
         self.configure_title_bar_color(TITLE_BAR_COLOR)
