@@ -241,7 +241,13 @@ class App(ctk.CTk):
             if response.status_code == 200:
                 response_image = Image.open(io.BytesIO(response.content))
                 overlay_image = Image.open("./assets/overlay.png")
+                logo_image = Image.open("./assets/logo.png")
+                response_image.paste(logo_image, (0, 0), logo_image)
                 response_image.paste(overlay_image, (0, 0), overlay_image)
+
+                # Replace the BetterRTX logo file with the one from the internet
+                response_image.save("./assets/BetterRTX.png")
+
                 return response_image
             else:
                 return None

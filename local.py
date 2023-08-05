@@ -166,7 +166,7 @@ class LocalPage(ctk.CTkFrame):
             text="Install",
             font=FONT,
             text_color=TEXT_COLOR_LIGHT,
-            command=self.install,
+            command=self.install_in_thread,
             height=40,
             corner_radius=10,
             hover_color=HOVER_COLOR,
@@ -199,6 +199,10 @@ class LocalPage(ctk.CTkFrame):
 
     def is_valid_file_path(self, file_path):
         return os.path.exists(file_path)
+    
+    def install_in_thread(self):
+        t = threading.Thread(target=self.install)
+        t.start()
 
     def install(self):
         # disable button

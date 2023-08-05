@@ -12,6 +12,15 @@ class NativePage(ctk.CTkFrame):
     def __init__(self, parent):
         ctk.CTkFrame.__init__(self, parent, fg_color=BACKGROUND_COLOR)
 
+        self.space_label =ctk.CTkLabel(
+            self,
+            fg_color=BACKGROUND_COLOR,
+            text='',
+            font=FONT,
+            text_color=TEXT_COLOR_DARK,
+        )
+        self.space_label.pack(side="top", pady=5, fill="x", expand=False)
+
         self.preset_selector = ctk.CTkComboBox(
             self,
             command=self.combobox_callback,

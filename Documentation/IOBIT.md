@@ -1,6 +1,6 @@
 ## Module: IOBIT
 ## File Name: `iobit.py`
-This module contains the native graphical user interface page for the installer.
+This module contains the iobit graphical user interface page for the installer.
 
 ## Class: IOBitPage
 This class represents the IOBit page in the application. It inherits from `customtkinter.CTkFrame` and provides functionality for selecting and installing presets with IOBit Unlocker.
